@@ -1,6 +1,6 @@
 import { TIngredient } from '@utils-types';
 import { forwardRef, useMemo } from 'react';
-import { RootState, useSelector } from '../../services/store';
+import { useSelector } from '../../services/store';
 import { IngredientsCategoryUI } from '../ui/ingredients-category';
 import { TIngredientsCategoryProps } from './type';
 
@@ -9,7 +9,7 @@ export const IngredientsCategory = forwardRef<
   TIngredientsCategoryProps
 >(({ title, titleRef, ingredients }, ref) => {
   const burgerConstructor = useSelector(
-    (state: RootState) => state.burger.constructorItems
+    (state) => state.burger.constructorItems
   );
 
   const ingredientsCounters = useMemo(() => {

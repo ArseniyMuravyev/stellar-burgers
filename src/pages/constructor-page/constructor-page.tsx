@@ -1,4 +1,4 @@
-import { RootState, useSelector } from '../../services/store';
+import { useSelector } from '../../services/store';
 
 import styles from './constructor-page.module.css';
 
@@ -8,7 +8,7 @@ import { Preloader } from '../../components/ui';
 
 export const ConstructorPage: FC = () => {
   const isIngredientsLoading = useSelector(
-    (state: RootState) => state.burger.isIngredientsLoading
+    (state) => state.burger.isIngredientsLoading
   );
 
   return (

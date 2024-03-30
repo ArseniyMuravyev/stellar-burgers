@@ -8,24 +8,20 @@ import {
   getOrderByNumber,
   orderBurger
 } from '../../features/burger-slice/burgerSlice';
-import { RootState, useDispatch, useSelector } from '../../services/store';
+import { useDispatch, useSelector } from '../../services/store';
 
 export const BurgerConstructor: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const constructorItems = useSelector(
-    (state: RootState) => state.burger.constructorItems
+    (state) => state.burger.constructorItems
   );
 
-  const orderRequest = useSelector(
-    (state: RootState) => state.burger.orderRequest
-  );
+  const orderRequest = useSelector((state) => state.burger.orderRequest);
 
-  const orderModalData = useSelector(
-    (state: RootState) => state.burger.orderModalData
-  );
-  const user = useSelector((state: RootState) => state.user.user);
-  const orders = useSelector((state: RootState) => state.burger.orders);
+  const orderModalData = useSelector((state) => state.burger.orderModalData);
+  const user = useSelector((state) => state.user.user);
+  const orders = useSelector((state) => state.burger.orders);
 
   const onOrderClick = async () => {
     if (user === null) {
@@ -39,7 +35,6 @@ export const BurgerConstructor: FC = () => {
       dispatch(createOrderRequest());
       dispatch(orderBurger(ingredientIds));
       dispatch(getOrderByNumber(orders[0]?.number));
-      console.log(orders);
     }
   };
 

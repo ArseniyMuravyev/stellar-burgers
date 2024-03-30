@@ -7,6 +7,7 @@ import {
   createSlice
 } from '@reduxjs/toolkit';
 import { TIngredient, TOrder, TOrdersData } from '@utils-types';
+import { v4 as uuid } from 'uuid';
 import { RootState } from '../../services/store';
 import {
   getFeedsApi,
@@ -38,35 +39,21 @@ export const selectIngredientById = createSelector(
 
 export const fetchIngredients = createAsyncThunk(
   'ingredients/fetchIngredients',
-  async () => {
-    const ingredients = await getIngredientsApi();
-    return ingredients;
-  }
+  getIngredientsApi
 );
-export const fetchOrders = createAsyncThunk('orders/fetchOrders', async () => {
-  const orders = await getOrdersApi();
-  return orders;
-});
 
-export const fetchFeeds = createAsyncThunk('feed/fetchFeeds', async () => {
-  const feeds = await getFeedsApi();
-  return feeds;
-});
+export const fetchOrders = createAsyncThunk('orders/fetchOrders', getOrdersApi);
+
+export const fetchFeeds = createAsyncThunk('feed/fetchFeeds', getFeedsApi);
 
 export const getOrderByNumber = createAsyncThunk(
   'order/:number',
-  async (number: number) => {
-    const orderData = await getOrderByNumberApi(number);
-    return orderData;
-  }
+  getOrderByNumberApi
 );
 
 export const orderBurger = createAsyncThunk(
   'orderBurger/:number',
-  async (ingredients: string[]) => {
-    const orderData = await orderBurgerApi(ingredients);
-    return orderData;
-  }
+  orderBurgerApi
 );
 
 export const closeOrder = createAction('burger/closeOrder');
@@ -91,7 +78,11 @@ const burgerSlice = createSlice({
   initialState,
   reducers: {
     addIngredient: (state, action: PayloadAction<TIngredient>) => {
-      state.constructorItems.ingredients.push(action.payload);
+      const newIngredient = {
+        ...action.payload,
+        id: uuid()
+      };
+      state.constructorItems.ingredients.push(newIngredient);
     },
     addBun: (state, action: PayloadAction<TIngredient>) => {
       state.constructorItems.bun = action.payload;
@@ -170,8 +161,6 @@ const burgerSlice = createSlice({
       })
       .addCase(orderBurger.fulfilled, (state, action) => {
         const newOrder = action.payload.order;
-        console.log(newOrder);
-        console.log(state.orders);
         localStorage.setItem(
           'userOrders',
           JSON.stringify([...state.orders, newOrder])

@@ -1,25 +1,19 @@
 import { TIngredient } from '@utils-types';
 import { FC, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import {
-  fetchIngredients,
-  getOrderByNumber
-} from '../../features/burger-slice/burgerSlice';
-import { RootState, useDispatch, useSelector } from '../../services/store';
+import { getOrderByNumber } from '../../features/burger-slice/burgerSlice';
+import { useDispatch, useSelector } from '../../services/store';
 import { OrderInfoUI } from '../ui/order-info';
 import { Preloader } from '../ui/preloader';
 
 export const OrderInfo: FC = () => {
   const dispatch = useDispatch();
-  const orderData = useSelector((state: RootState) => state.burger.orderData);
-  const ingredients = useSelector(
-    (state: RootState) => state.burger.ingredients
-  );
+  const orderData = useSelector((state) => state.burger.orderData);
+  const ingredients = useSelector((state) => state.burger.ingredients);
   const { number } = useParams();
 
   useEffect(() => {
     dispatch(getOrderByNumber(Number(number)));
-    dispatch(fetchIngredients());
   }, []);
 
   const orderInfo = useMemo(() => {

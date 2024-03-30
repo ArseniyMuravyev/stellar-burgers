@@ -2,11 +2,11 @@ import { updateUserApi } from '@api';
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { getUser } from '../../features/user-slice/userSlice';
-import { RootState, useDispatch, useSelector } from '../../services/store';
+import { useDispatch, useSelector } from '../../services/store';
 
 export const Profile: FC = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state: RootState) => state.user.user);
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     dispatch(getUser());
