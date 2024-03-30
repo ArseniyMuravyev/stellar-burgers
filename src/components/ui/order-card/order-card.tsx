@@ -69,7 +69,7 @@ export const OrderCardUI: FC<OrderCardUIProps> = memo(
           <span
             className={`text text_type_digits-default pr-1 ${styles.order_total}`}
           >
-            {orderInfo.price}
+            {orderInfo.price ? orderInfo.price : orderInfo.total}
           </span>
           <CurrencyIcon type='primary' />
         </div>
