@@ -1,11 +1,11 @@
-import { FC, useState } from 'react';
 import {
-  Input,
   Button,
+  Input,
   PasswordInput
 } from '@zlden/react-developer-burger-ui-components';
-import styles from '../common.module.css';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import styles from '../common.module.css';
 import { RegisterUIProps } from './type';
 
 export const RegisterUI: FC<RegisterUIProps> = ({

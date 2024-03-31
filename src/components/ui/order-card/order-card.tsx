@@ -1,14 +1,14 @@
-import React, { FC, memo } from 'react';
-import { Link } from 'react-router-dom';
 import {
   CurrencyIcon,
   FormattedDate
 } from '@zlden/react-developer-burger-ui-components';
+import { FC, memo } from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './order-card.module.css';
 
-import { OrderCardUIProps } from './type';
 import { OrderStatus } from '@components';
+import { OrderCardUIProps } from './type';
 
 export const OrderCardUI: FC<OrderCardUIProps> = memo(
   ({ orderInfo, maxIngredients, locationState }) => (
@@ -69,7 +69,7 @@ export const OrderCardUI: FC<OrderCardUIProps> = memo(
           <span
             className={`text text_type_digits-default pr-1 ${styles.order_total}`}
           >
-            {orderInfo.total}
+            {orderInfo.price ? orderInfo.price : orderInfo.total}
           </span>
           <CurrencyIcon type='primary' />
         </div>

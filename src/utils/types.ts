@@ -24,6 +24,12 @@ export type TOrder = {
   updatedAt: string;
   number: number;
   ingredients: string[];
+  owner?: {
+    createdAt: string;
+    email: string;
+    name: string;
+    updatedAt: string;
+  };
 };
 
 export type TOrdersData = {
