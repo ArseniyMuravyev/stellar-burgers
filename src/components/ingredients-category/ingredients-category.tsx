@@ -23,6 +23,19 @@ export const IngredientsCategory = forwardRef<
     return counters;
   }, [burgerConstructor]);
 
+  const getDataCyValue = (title: string) => {
+    switch (title) {
+      case 'Булки':
+        return 'bun';
+      case 'Начинки':
+        return 'fillings';
+      case 'Соусы':
+        return 'sauces';
+      default:
+        return 'bun';
+    }
+  };
+
   return (
     <IngredientsCategoryUI
       title={title}
@@ -30,6 +43,7 @@ export const IngredientsCategory = forwardRef<
       ingredients={ingredients}
       ingredientsCounters={ingredientsCounters}
       ref={ref}
+      getDataCyValue={getDataCyValue}
     />
   );
 });

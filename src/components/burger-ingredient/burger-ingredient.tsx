@@ -2,7 +2,7 @@ import { FC, memo } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { BurgerIngredientUI } from '@ui';
-import { addBun, addIngredient } from '../../features/burger-slice/burgerSlice';
+import { addBun, addIngredient } from '../../features/burger-slice/slice';
 import { useDispatch } from '../../services/store';
 import { TBurgerIngredientProps } from './type';
 

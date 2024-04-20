@@ -6,7 +6,7 @@ import App from './components/app/app';
 import store from './services/store';
 
 const container = document.getElementById('root') as HTMLElement;
-const root = ReactDOMClient.createRoot(container!);
+const root = ReactDOMClient.createRoot(container);
 
 root.render(
   <React.StrictMode>

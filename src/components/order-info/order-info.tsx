@@ -1,15 +1,15 @@
 import { TIngredient } from '@utils-types';
 import { FC, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { getOrderByNumber } from '../../features/burger-slice/burgerSlice';
+import { getOrderByNumber } from '../../features/order-slice/actions';
 import { useDispatch, useSelector } from '../../services/store';
 import { OrderInfoUI } from '../ui/order-info';
 import { Preloader } from '../ui/preloader';
 
 export const OrderInfo: FC = () => {
   const dispatch = useDispatch();
-  const orderData = useSelector((state) => state.burger.orderData);
-  const ingredients = useSelector((state) => state.burger.ingredients);
+  const orderData = useSelector((state) => state.order.orderData);
+  const ingredients = useSelector((state) => state.ingredients.ingredients);
   const { number } = useParams();
 
   useEffect(() => {

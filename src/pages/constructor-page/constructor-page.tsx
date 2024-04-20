@@ -8,7 +8,7 @@ import { Preloader } from '../../components/ui';
 
 export const ConstructorPage: FC = () => {
   const isIngredientsLoading = useSelector(
-    (state) => state.burger.isIngredientsLoading
+    (state) => state.ingredients.isIngredientsLoading
   );
 
   return (

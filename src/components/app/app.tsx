@@ -12,8 +12,8 @@ import {
 } from '@pages';
 import { useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { fetchIngredients } from '../../features/burger-slice/burgerSlice';
-import { checkUserAuth } from '../../features/user-slice/userSlice';
+import { fetchIngredients } from '../../features/ingredients-slice/actions';
+import { checkUserAuth } from '../../features/user-slice/actions';
 import '../../index.css';
 import { useDispatch } from '../../services/store';
 import { ProtectedRoute } from '../protected-route';

@@ -1,13 +1,13 @@
 import { BurgerConstructorUI } from '@ui';
 import { TConstructorIngredient, TIngredient } from '@utils-types';
-import { FC, useMemo } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { resetConstructor } from '../../features/burger-slice/slice';
 import {
   closeOrder,
-  createOrderRequest,
   getOrderByNumber,
   orderBurger
-} from '../../features/burger-slice/burgerSlice';
+} from '../../features/order-slice/actions';
 import { useDispatch, useSelector } from '../../services/store';
 
 export const BurgerConstructor: FC = () => {
@@ -17,11 +17,25 @@ export const BurgerConstructor: FC = () => {
     (state) => state.burger.constructorItems
   );
 
-  const orderRequest = useSelector((state) => state.burger.orderRequest);
+  const orderRequest = useSelector((state) => state.order.orderRequest);
 
-  const orderModalData = useSelector((state) => state.burger.orderModalData);
+  const orderModalData = useSelector((state) => state.order.orderModalData);
   const user = useSelector((state) => state.user.user);
   const orders = useSelector((state) => state.burger.orders);
+
+  const handlePlaceOrder = useCallback(
+    (ingredientIds: string[]) => {
+      dispatch(orderBurger(ingredientIds))
+        .then(() => {
+          dispatch(resetConstructor());
+          dispatch(getOrderByNumber(orders[0]?.number));
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+    [dispatch]
+  );
 
   const onOrderClick = async () => {
     if (user === null) {
@@ -32,9 +46,7 @@ export const BurgerConstructor: FC = () => {
         constructorItems.bun._id,
         constructorItems.bun._id
       ];
-      dispatch(createOrderRequest());
-      dispatch(orderBurger(ingredientIds));
-      dispatch(getOrderByNumber(orders[0]?.number));
+      handlePlaceOrder(ingredientIds);
     }
   };
 

@@ -4,7 +4,7 @@ import {
   deleteIngredient,
   moveIngredientDown,
   moveIngredientUp
-} from '../../features/burger-slice/burgerSlice';
+} from '../../features/burger-slice/slice';
 import { useDispatch } from '../../services/store';
 import { BurgerConstructorElementProps } from './type';
 
