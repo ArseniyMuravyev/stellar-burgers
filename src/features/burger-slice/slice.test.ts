@@ -1,21 +1,11 @@
 import burgerReducer, {
   addBun,
   addIngredient,
-  deleteIngredient
+  deleteIngredient,
+  initialState
 } from './slice';
 
 describe('редьюсер бургера', () => {
-  const initialState = {
-    orders: [],
-    loading: false,
-    error: null,
-    feed: {},
-    constructorItems: {
-      bun: null,
-      ingredients: []
-    }
-  };
-
   describe('проверяем корректную работу функций добавления и удаления ингредиент', () => {
     test('должен обрабатывать начальное состояние', () => {
       expect(burgerReducer(undefined, { type: 'unknown' })).toEqual(

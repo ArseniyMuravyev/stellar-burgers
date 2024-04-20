@@ -11,7 +11,7 @@ interface BurgerState {
   constructorItems: any;
 }
 
-const initialState: BurgerState = {
+export const initialState: BurgerState = {
   orders: [],
   loading: false,
   error: null,

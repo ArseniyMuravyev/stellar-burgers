@@ -14,7 +14,7 @@ interface IngredientsState {
   error: SerializedError | null;
 }
 
-const initialState: IngredientsState = {
+export const initialState: IngredientsState = {
   ingredients: [],
   isIngredientsLoading: false,
   loading: false,

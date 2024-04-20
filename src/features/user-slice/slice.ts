@@ -12,7 +12,7 @@ interface UserState {
   userOrders: TOrder[];
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   isAuthChecked: false,
   isAuthenticated: false,
   user: null,
