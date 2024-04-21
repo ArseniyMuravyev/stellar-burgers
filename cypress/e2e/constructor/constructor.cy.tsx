@@ -4,7 +4,19 @@ describe('Интегрированные тесты для приложения 
       fixture: 'ingredients.json'
     });
 
+    cy.setCookie('accessToken', 'test_access_token');
+    cy.window().then((win) => {
+      win.localStorage.setItem('refreshToken', 'test_refresh_token');
+    });
+
     cy.visit('/');
+  });
+
+  afterEach(() => {
+    cy.clearCookies();
+    cy.window().then((win) => {
+      win.localStorage.clear();
+    });
   });
 
   describe('проверяем работу модальных окон', () => {
