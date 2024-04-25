@@ -9,4 +9,3 @@ Cypress.Commands.add('getConstructorBun', () =>
 );
 
 Cypress.Commands.add('getIngredient', () => cy.get('[data-cy="ingredient"]'));
-  

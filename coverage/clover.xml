@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1713608313972" clover="3.2.0">
-  <project timestamp="1713608313972" name="All files">
+<coverage generated="1713665609643" clover="3.2.0">
+  <project timestamp="1713665609643" name="All files">
     <metrics statements="703" coveredstatements="428" conditionals="55" coveredconditionals="41" methods="75" coveredmethods="19" elements="833" coveredelements="488" complexity="0" loc="703" ncloc="703" packages="6" files="11" classes="11"/>
     <package name="features.burger-slice">
       <metrics statements="111" coveredstatements="80" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="4"/>
